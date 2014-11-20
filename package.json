@@ -23,6 +23,5 @@
   },
   "scripts": {
     "test": "node_modules/grunt-cli/bin/grunt jshint"
-  },
-  "private": true
+  }
 }
