@@ -37,6 +37,12 @@ Change `<node>` to the running user.
 
 Thankfully, iptables does not allow duplicate copies of most flags, so that the `*` wildcards can't be abused (much). Nonetheless, sercurity feedback is welcome. An alternative for `*` would be appreciated.
 
+Usage
+=======
+    npm install ipcluster --save
+
+See https://github.com/zopim/ipcluster-example for a simple example.
+
 Contributing
 ============
 
