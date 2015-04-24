@@ -8,6 +8,7 @@ Features
 * Sticky sessions (via iptables abuse) - suitable for long-polling
 * Configurable per-process and cluster memory limits
 * Graceful shutdowns and restarts
+* Renice older workers
 
 Dependencies
 ------------
@@ -38,10 +39,30 @@ Change `<node>` to the running user.
 Thankfully, iptables does not allow duplicate copies of most flags, so that the `*` wildcards can't be abused (much). Nonetheless, sercurity feedback is welcome. An alternative for `*` would be appreciated.
 
 Usage
-=======
+=====
     npm install ipcluster --save
 
 See https://github.com/zopim/ipcluster-example for a simple example.
+
+In your application
+-------------------
+
+Deploying new code / Running a new batch of workers
+---------------------------------------------------
+Once you app is ipcluster-enabled, starting it should start a master that will spawn multiple workers. The workers are _not_ child processes (they will outlive the master).
+
+To start a new batch a workers (e.g. when you are deployig new code), you should kill off the old master, and start a new master. The old workers will still be running happily.
+
+Restarting a new master will do 2 things:
+  - Spawn a new generation of workers, running your latest code for all new incoming connections
+  - Become the master for all old workers, and manage their retirement and (eventual) destruction
+
+Note: you can restart a new master without first killing the old one. The new master will find and terminate the old master as part of its boot up sequence.
+
+Signals
+-------
+The master process understands these signals:
+  - `SIGUSR1`: Kills all retired workers.
 
 Contributing
 ============
@@ -60,16 +81,15 @@ Make sure you add "/usr/local/share/npm/bin" to your PATH, and then do the insta
     # testing install, should show "jshint vX.Y.Z"
     jshint -version
 
+### Running jshint
 
-### Installing the precommit hook
+Run jshint on the whole source tree
 
-After you have cloned the meshim-server project locally, run the following command **at the root of the project**:
-
-    ln -s ../../support/pre-commit .git/hooks/pre-commit
+    jshint lib
 
 Testing
 -------
-meshim-server contains some unit tests made with [nodeunit](https://github.com/caolan/nodeunit) (with many more to come, thanks to **you**!). The tests can be run with [grunt](http://gruntjs.com/), the task runner. At the root of the project run:
+ipcluster contains some unit tests made with [nodeunit](https://github.com/caolan/nodeunit) (with many more to come, thanks to **you**!). The tests can be run with [grunt](http://gruntjs.com/), the task runner. At the root of the project run:
 
     grunt test
 
