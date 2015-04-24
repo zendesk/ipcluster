@@ -47,8 +47,8 @@ See https://github.com/zopim/ipcluster-example for a simple example.
 In your application
 -------------------
 
-Deploying new code / Running a new batch of workers
----------------------------------------------------
+### Deploying new code / Running a new batch of workers
+
 Once you app is ipcluster-enabled, starting it should start a master that will spawn multiple workers. The workers are _not_ child processes (they will outlive the master).
 
 To start a new batch a workers (e.g. when you are deployig new code), you should kill off the old master, and start a new master. The old workers will still be running happily.
