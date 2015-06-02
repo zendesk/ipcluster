@@ -31,12 +31,12 @@ module.exports = function(grunt) {
 
     nodeunit: 
     {
-      all: ['tests/nodeunit/**/*.js']
+      all: ['test/nodeunit/**/*.js']
     }
   });
 
   grunt.loadNpmTasks('grunt-contrib-nodeunit');
-  // grunt.loadNpmTasks('grunt-contrib-jshint');
+  grunt.loadNpmTasks('grunt-contrib-jshint');
 
   // Default task(s).
   grunt.registerTask('test', ['nodeunit']);

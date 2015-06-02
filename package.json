@@ -11,15 +11,16 @@
   },
   "main": "lib/ipcluster.js",
   "dependencies": {
-    "commander": "~0.6.0",
-    "q": "~0.9.7",
-    "lodash": "~2.4.1",
+    "commander": "~2.8.1",
+    "q": "~1.4.1",
+    "lodash": "~3.10.1",
     "toobusy-js": "git+ssh://git@github.com:STRML/node-toobusy.git#3199f38dc3b"
   },
   "devDependencies": {
     "grunt": "0.4.5",
     "grunt-cli": "",
-    "grunt-contrib-nodeunit": "*"
+    "grunt-contrib-nodeunit": "*",
+    "grunt-contrib-jshint": "*"
   },
   "scripts": {
     "test": "node_modules/grunt-cli/bin/grunt jshint"

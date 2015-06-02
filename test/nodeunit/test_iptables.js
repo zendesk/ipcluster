@@ -28,7 +28,7 @@ exports.test_parse = function(test) {
 		'REDIRECT   tcp  --  0.0.0.3/0.0.0.3      1.2.3.4             tcp dpt:443 redir ports 12345 '
 	].join('\n');
 
-	var iptables_entries = IPTSet.parse(FAKE_INPUT, '107.6.117.59');
+	var iptables_entries = IPTSet.parse(FAKE_INPUT, '107.6.117.59', [80, 443]);
 
 	test.deepEqual(iptables_entries, [
 		['107.6.117.59', 0, 7, 80, 10800],
