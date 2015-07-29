@@ -1,24 +1,24 @@
 {
   "author": "Zopim",
   "name": "ipcluster",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "repository": {
     "type": "git",
     "url": "git@github.com:zopim/ipcluster.git"
   },
   "engines": {
-    "node": "~0.8"
+    "node": "~0.10"
   },
   "main": "lib/ipcluster.js",
   "dependencies": {
-    "commander": "~0.6.0",
-    "q": "~0.9.7",
-    "lodash": "~2.4.1",
+    "q": "~1.4.1",
+    "lodash": "~3.10.0",
     "toobusy": "~0.2.4"
   },
   "devDependencies": {
+    "commander": "~2.8.1",
     "grunt": "0.4.5",
-    "grunt-cli": "",
+    "grunt-cli": "*",
     "grunt-contrib-nodeunit": "*"
   },
   "scripts": {
