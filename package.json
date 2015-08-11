@@ -7,14 +7,14 @@
     "url": "git@github.com:zopim/ipcluster.git"
   },
   "engines": {
-    "node": "~0.8"
+    "node": ">=0.9.1"
   },
   "main": "lib/ipcluster.js",
   "dependencies": {
     "commander": "~0.6.0",
     "q": "~0.9.7",
     "lodash": "~2.4.1",
-    "toobusy": "~0.2.4"
+    "toobusy-js": "git+ssh://git@github.com:STRML/node-toobusy.git#3199f38dc3b"
   },
   "devDependencies": {
     "grunt": "0.4.5",
