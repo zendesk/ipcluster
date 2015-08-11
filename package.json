@@ -1,7 +1,7 @@
 {
   "author": "Zopim",
   "name": "ipcluster",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "repository": {
     "type": "git",
     "url": "git@github.com:zopim/ipcluster.git"
@@ -14,7 +14,7 @@
     "commander": "~0.6.0",
     "q": "~0.9.7",
     "lodash": "~2.4.1",
-    "toobusy": "~0.2.4"
+    "toobusy": "git+ssh://git@github.com:zopim/node-toobusy.git"
   },
   "devDependencies": {
     "grunt": "0.4.5",
