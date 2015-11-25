@@ -12,7 +12,7 @@ Features
 
 Dependencies
 ------------
-* npm modules - commander, q
+* npm modules - q, toobusy-js, lodash
 
 _IPCluster sticky sessions currently requires `iptables` for sticky sessions and so is Linux-only_
 
