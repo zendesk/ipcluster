@@ -14,7 +14,7 @@
     "commander": "~2.8.1",
     "q": "~1.4.1",
     "lodash": "~3.10.1",
-    "toobusy-js": "STRML/node-toobusy#v0.4.3"
+    "toobusy-js": "0.4.3"
   },
   "devDependencies": {
     "grunt": "0.4.5",
