@@ -14,7 +14,7 @@
     "commander": "~2.8.1",
     "q": "~1.4.1",
     "lodash": "~3.10.1",
-    "toobusy-js": "git+ssh://git@github.com:STRML/node-toobusy.git#3199f38dc3b"
+    "toobusy-js": "0.4.3"
   },
   "devDependencies": {
     "grunt": "0.4.5",
