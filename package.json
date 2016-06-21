@@ -1,7 +1,7 @@
 {
   "author": "Zopim",
   "name": "ipcluster",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "repository": {
     "type": "git",
     "url": "git@github.com:zopim/ipcluster.git"
@@ -11,7 +11,6 @@
   },
   "main": "lib/ipcluster.js",
   "dependencies": {
-    "commander": "~2.8.1",
     "q": "~1.4.1",
     "lodash": "~3.10.1",
     "toobusy-js": "0.4.3"
