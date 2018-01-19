@@ -1,0 +1,10 @@
+language: node_js
+node_js:
+  - "0.10"
+before_script:
+  - npm install -g jshint 
+cache:
+    directories:
+        - node_modules
+script:
+  - jshint lib
