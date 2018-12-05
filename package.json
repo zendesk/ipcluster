@@ -11,9 +11,8 @@
   },
   "main": "lib/ipcluster.js",
   "dependencies": {
-    "commander": "~2.8.1",
-    "q": "~1.4.1",
-    "lodash": "~3.10.1",
+    "q": "1.5.1",
+    "lodash": "4.17.11",
     "toobusy-js": "0.4.3"
   },
   "devDependencies": {
