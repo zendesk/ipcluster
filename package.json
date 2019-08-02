@@ -2,6 +2,7 @@
   "author": "Zopim",
   "name": "ipcluster",
   "version": "0.0.12",
+  "license": "Apache-2.0",
   "repository": {
     "type": "git",
     "url": "git@github.com:zopim/ipcluster.git"
@@ -11,17 +12,16 @@
   },
   "main": "lib/ipcluster.js",
   "dependencies": {
+    "lodash": "^4.17.15",
     "q": "1.5.1",
-    "lodash": "4.17.11",
     "toobusy-js": "0.4.3"
   },
   "devDependencies": {
-    "grunt": "0.4.5",
-    "grunt-cli": "",
-    "grunt-contrib-nodeunit": "*",
-    "grunt-contrib-jshint": "*"
+    "eslint": "^6.1.0",
+    "nodeunit": "^0.11.3"
   },
   "scripts": {
-    "test": "node_modules/grunt-cli/bin/grunt jshint"
+    "test": "nodeunit test/**/*.js",
+    "lint": "eslint **/*.js"
   }
 }
