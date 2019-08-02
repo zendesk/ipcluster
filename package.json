@@ -1,11 +1,14 @@
 {
-  "author": "Zopim",
-  "name": "ipcluster",
-  "version": "0.0.12",
+  "author": "Zendesk",
+  "name": "@zendesk/ipcluster",
+  "version": "1.0.1",
   "license": "Apache-2.0",
   "repository": {
     "type": "git",
-    "url": "git@github.com:zopim/ipcluster.git"
+    "url": "git@github.com:zendesk/ipcluster.git"
+  },
+  "publishConfig": {
+    "registry": "https://zdrepo.jfrog.io/zdrepo/api/npm/npm"
   },
   "engines": {
     "node": ">=0.9.1"

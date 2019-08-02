@@ -1,0 +1,28 @@
+language: node_js
+
+sudo: true
+
+node_js:
+  - "8"
+  - "10"
+  - "12"
+
+jobs:
+  include:
+    - script: npm run lint
+      name: Check Linting
+    - script: npm run test
+      name: Run Tests
+
+before_deploy:
+  - curl -u "$ARTIFACTORY_USERNAME:$ARTIFACTORY_API_KEY" --fail https://zdrepo.jfrog.io/zdrepo/api/npm/npm/auth/zendesk >> ~/.npmrc
+
+deploy:
+  provider: script
+  script: npm publish
+  on:
+    node_js: "12"
+    branch: master
+    condition: >-
+      $(npm v -json | jq --raw-output '."dist-tags".latest') !=
+      $(jq --raw-output .version package.json)

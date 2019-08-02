@@ -1,6 +1,8 @@
 IPCluster
 =========
 
+[![Travis CI build status](https://travis-ci.com/zendesk/ipcluster.svg?branch=master)](https://travis-ci.com/zendesk/ipcluster)
+
 IPCluster is a "bare-metal" library for Node.js to manage multi-core concurrency, with sticky sessions and zero-downtime reloading.
 
 Features
