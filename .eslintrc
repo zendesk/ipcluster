@@ -1,0 +1,15 @@
+{
+  "env": {
+    "node": true
+  },
+  "extends": ["eslint:recommended"],
+  "rules": {
+    "strict": "off",
+    "semi": "off",
+    "no-unused-expressions": "off",
+    "dot-notation": "off",
+    "new-cap": "off",
+    "no-undef": "error",
+    "no-unused-vars": "error"
+  }
+}

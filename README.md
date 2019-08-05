@@ -1,6 +1,8 @@
 IPCluster
 =========
 
+[![Travis CI build status](https://travis-ci.com/zendesk/ipcluster.svg?branch=master)](https://travis-ci.com/zendesk/ipcluster)
+
 IPCluster is a "bare-metal" library for Node.js to manage multi-core concurrency, with sticky sessions and zero-downtime reloading.
 
 Features
@@ -67,37 +69,20 @@ The master process understands these signals:
 Contributing
 ============
 
-git pre-commit hook
+Linting
 -------------------
-Being a JS project, we require the code to be lint free, based on our Zopim's jshint rules (see the file .jshtinrc at the root of the project for details)
 
-### Installing jshint
+Run eslint
 
-Make sure you add "/usr/local/share/npm/bin" to your PATH, and then do the install as follow:
-
-    # installing jshint
-    npm install jshint -g
-
-    # testing install, should show "jshint vX.Y.Z"
-    jshint -version
-
-### Running jshint
-
-Run jshint on the whole source tree
-
-    jshint lib
+    npm run lint
 
 Testing
 -------
-ipcluster contains some unit tests made with [nodeunit](https://github.com/caolan/nodeunit) (with many more to come, thanks to **you**!). The tests can be run with [grunt](http://gruntjs.com/), the task runner. At the root of the project run:
+ipcluster contains some unit tests made with [nodeunit](https://github.com/caolan/nodeunit) (with many more to come, thanks to **you**!). At the root of the project run:
 
-    grunt test
+    npm test
 
-Do run the test suite (which also run jshint), prior to committing.
-
-Installing grunt
-----------------
-    npm install -g grunt-cli
+Do run the test suite prior to committing.
 
 Copyright and license
 =====================
