@@ -1,5 +1,7 @@
 var Q = require('q');
-var process_util = require('../../lib/process_util');
+var process_util = process.env.WITH_COVERAGE ?
+	require('../../lib-cov/process_util') :
+	require('../../lib/process_util');
 
 exports.test_ps = function(test) {
 

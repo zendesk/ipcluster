@@ -21,10 +21,13 @@
   },
   "devDependencies": {
     "eslint": "^6.1.0",
+    "jscoverage": "^0.6.0",
     "nodeunit": "^0.11.3"
   },
   "scripts": {
     "test": "nodeunit test/**/*.js",
-    "lint": "eslint **/*.js"
+    "test-with-coverage": "jscoverage lib > /dev/null && WITH_COVERAGE=1 nodeunit --reporter lcov test/**/*.js",
+    "lint": "eslint **/*.js",
+    "setup-jscoverage": "jscoverage lib"
   }
 }

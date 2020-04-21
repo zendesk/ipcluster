@@ -11,7 +11,7 @@ jobs:
   include:
     - script: npm run lint
       name: Check Linting
-    - script: npm run test
+    - script: npm run test-with-coverage > lcov.txt
       name: Run Tests
 
 before_deploy:
@@ -26,3 +26,5 @@ deploy:
     condition: >-
       $(npm v -json | jq --raw-output '."dist-tags".latest') !=
       $(jq --raw-output .version package.json)
+after_success:
+  - bash <(curl -s https://raw.githubusercontent.com/zendesk/codecov-bash/master/codecov) -t $CODECOV_TOKEN -f lcov.txt

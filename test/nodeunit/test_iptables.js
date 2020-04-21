@@ -1,4 +1,6 @@
-var IPTSet = require('../../lib/iptables');
+var IPTSet = process.env.WITH_COVERAGE ?
+	require('../../lib-cov/iptables') :
+	require('../../lib/iptables');
 
 IPTSet.log = console.log;
 
