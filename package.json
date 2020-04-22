@@ -27,7 +27,6 @@
   "scripts": {
     "test": "nodeunit test/**/*.js",
     "test-with-coverage": "jscoverage lib > /dev/null && WITH_COVERAGE=1 nodeunit --reporter lcov test/**/*.js",
-    "lint": "eslint **/*.js",
-    "setup-jscoverage": "jscoverage lib"
+    "lint": "eslint **/*.js"
   }
 }
