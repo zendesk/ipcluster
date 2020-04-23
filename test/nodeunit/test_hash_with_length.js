@@ -1,4 +1,6 @@
-var Hash = require('../../lib/HashWithLength');
+var Hash = process.env.WITH_COVERAGE ?
+	require('../../lib-cov/HashWithLength') :
+	require('../../lib/HashWithLength');
 
 exports.test_iteration = function(test) {
 

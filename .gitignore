@@ -1,3 +1,5 @@
 /node_modules
 .idea
 .editorconfig
+lib-cov/
+lcov.txt
