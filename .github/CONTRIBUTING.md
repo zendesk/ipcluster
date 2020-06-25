@@ -1,0 +1,5 @@
+- [Useful guide to good commit messages](http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html)
+- Commit messages should _not_ contain issue key. Put them in the PR instead. There is nothing wrong with having the issue IDs in the commits, but putting them only in the PR will save some characters per commit.
+- Each commit message should be a representative of what that commit contributes to the repo, not something unhelpful like "Add tests", or "Cleanup" or "JIRA-123FU". By looking at the message one should have a reasonable understanding of the purpose behind the commit.
+- You need 2 :+1:s and a green Travis build to merge Pull Requests.
+- For major changes, ping the team(s) on Slack owning this repo. Check Cerebro for ownership.
