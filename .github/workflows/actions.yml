@@ -3,7 +3,9 @@ on: [push]
 jobs:
   main:
     name: node_js-matrix
-    runs-on: [ self-hosted, zendesk-stable ]
+    runs-on: ubuntu-latest
+    env:
+      CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
     strategy:
       matrix:
         task:
@@ -21,6 +23,9 @@ jobs:
       with:
         node-version: ${{ matrix.version }}
     - name: node_js ${{ matrix.version }} ${{ matrix.task}}
+      env:
+        ARTIFACTORY_USERNAME: jshen
+        ARTIFACTORY_API_KEY: ${{ secrets.ARTIFACTORY_API_KEY }}
       run: |
         git config --global url."https://${{ secrets.ORG_GITHUB_TOKEN }}:x-oauth-basic@github.com/".insteadOf "https://github.com/"
         curl -u "$ARTIFACTORY_USERNAME:$ARTIFACTORY_API_KEY" --fail https://zdrepo.jfrog.io/zdrepo/api/npm/npm/auth/zendesk >> ~/.npmrc
@@ -31,7 +36,8 @@ jobs:
       run: |
         if [ -r lcov.txt ]
         then
-          bash <(curl -s https://raw.githubusercontent.com/zendesk/codecov-bash/master/codecov) -t $CODECOV_TOKEN -f lcov.txt
+          echo uploading codecove report
+          # bash <(curl -s https://raw.githubusercontent.com/zendesk/codecov-bash/master/codecov) -t $CODECOV_TOKEN -f lcov.txt
         fi
   deploy:
     name: node_js-deploy
