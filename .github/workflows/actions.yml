@@ -24,7 +24,7 @@ jobs:
         node-version: ${{ matrix.version }}
     - name: node_js ${{ matrix.version }} ${{ matrix.task}}
       env:
-        ARTIFACTORY_USERNAME: jshen
+        ARTIFACTORY_USERNAME: ${{ secrets.ARTIFACTORY_USERNAME }}
         ARTIFACTORY_API_KEY: ${{ secrets.ARTIFACTORY_API_KEY }}
       run: |
         git config --global url."https://${{ secrets.ORG_GITHUB_TOKEN }}:x-oauth-basic@github.com/".insteadOf "https://github.com/"
@@ -37,7 +37,7 @@ jobs:
         if [ -r lcov.txt ]
         then
           echo uploading codecove report
-          # bash <(curl -s https://raw.githubusercontent.com/zendesk/codecov-bash/master/codecov) -t $CODECOV_TOKEN -f lcov.txt
+          bash <(curl -s https://raw.githubusercontent.com/zendesk/codecov-bash/master/codecov) -t $CODECOV_TOKEN -f lcov.txt
         fi
   deploy:
     name: node_js-deploy
