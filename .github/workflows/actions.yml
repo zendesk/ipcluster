@@ -1,5 +1,9 @@
 name: repo-checks
-on: [push]
+on:
+  pull_request:
+  push:
+    branches:
+      - master
 jobs:
   main:
     name: node_js-matrix
@@ -35,7 +39,7 @@ jobs:
       if: success()
       run: |
         set -x
-        cat lcov.txt
+        cat lcov.txt || true
         if [ -r lcov.txt ]
         then
           echo uploading codecove report
