@@ -34,6 +34,8 @@ jobs:
     - name: after_success
       if: success()
       run: |
+        set -x
+        cat lcov.txt
         if [ -r lcov.txt ]
         then
           echo uploading codecove report
