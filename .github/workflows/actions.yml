@@ -17,7 +17,7 @@ jobs:
     - uses: zendesk/checkout@v2
       with:
         fetch-depth: 0
-    - uses: zendesk/setup-node@v2.0.0
+    - uses: zendesk/setup-node@v2.5.1
       with:
         node-version: ${{ matrix.version }}
     - name: node_js ${{ matrix.version }} ${{ matrix.task}}
@@ -37,7 +37,7 @@ jobs:
     - uses: zendesk/checkout@v2
       with:
         fetch-depth: 0
-    - uses: zendesk/setup-node@v2.0.0
+    - uses: zendesk/setup-node@v2.5.1
       with:
         node-version: 12
     - name: publish
