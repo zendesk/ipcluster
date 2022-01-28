@@ -14,7 +14,7 @@ Features
 
 Dependencies
 ------------
-* npm modules - commander, q
+* npm modules - toobusy-js, q
 
 _IPCluster sticky sessions currently requires `iptables` for sticky sessions and so is Linux-only_
 
@@ -38,13 +38,13 @@ etc. for other ports
 
 Change `<node>` to the running user.
 
-Thankfully, iptables does not allow duplicate copies of most flags, so that the `*` wildcards can't be abused (much). Nonetheless, sercurity feedback is welcome. An alternative for `*` would be appreciated.
+Thankfully, iptables does not allow duplicate copies of most flags, so that the `*` wildcards can't be abused (much). Nonetheless, security feedback is welcome. An alternative for `*` would be appreciated.
 
 Usage
 =====
     npm install ipcluster --save
 
-See https://github.com/zopim/ipcluster-example for a simple example.
+See https://github.com/zendesk/zopim-ipcluster-example for a simple example.
 
 In your application
 -------------------
@@ -55,11 +55,11 @@ Once you app is ipcluster-enabled, starting it should start a master that will s
 
 To start a new batch a workers (e.g. when you are deployig new code), you should kill off the old master, and start a new master. The old workers will still be running happily.
 
-Restarting a new master will do 2 things:
+Starting a new master will do 2 things:
   - Spawn a new generation of workers, running your latest code for all new incoming connections
   - Become the master for all old workers, and manage their retirement and (eventual) destruction
 
-Note: you can restart a new master without first killing the old one. The new master will find and terminate the old master as part of its boot up sequence.
+Note: you can start a new master without first killing the old one. The new master will find and terminate the old master as part of its boot up sequence.
 
 Signals
 -------

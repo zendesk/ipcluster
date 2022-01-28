@@ -3,3 +3,4 @@
 .editorconfig
 lib-cov/
 lcov.txt
+package-lock.json

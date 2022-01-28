@@ -4,8 +4,6 @@ jobs:
   main:
     name: node_js-matrix
     runs-on: ubuntu-latest
-    env:
-      CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
     strategy:
       matrix:
         task:
@@ -19,7 +17,7 @@ jobs:
     - uses: zendesk/checkout@v2
       with:
         fetch-depth: 0
-    - uses: zendesk/setup-node@v2.0.0
+    - uses: zendesk/setup-node@v2.5.1
       with:
         node-version: ${{ matrix.version }}
     - name: node_js ${{ matrix.version }} ${{ matrix.task}}
@@ -31,14 +29,6 @@ jobs:
         curl -u "$ARTIFACTORY_USERNAME:$ARTIFACTORY_API_KEY" --fail https://zdrepo.jfrog.io/zdrepo/api/npm/npm/auth/zendesk >> ~/.npmrc
         npm install
         npm run ${{ matrix.task}}
-    - name: after_success
-      if: success()
-      run: |
-        if [ -r lcov.txt ]
-        then
-          echo uploading codecove report
-          bash <(curl -s https://raw.githubusercontent.com/zendesk/codecov-bash/master/codecov) -t $CODECOV_TOKEN -f lcov.txt
-        fi
   deploy:
     name: node_js-deploy
     needs: main
@@ -47,7 +37,7 @@ jobs:
     - uses: zendesk/checkout@v2
       with:
         fetch-depth: 0
-    - uses: zendesk/setup-node@v2.0.0
+    - uses: zendesk/setup-node@v2.5.1
       with:
         node-version: 12
     - name: publish

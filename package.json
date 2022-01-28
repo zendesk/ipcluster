@@ -1,7 +1,7 @@
 {
   "author": "Zendesk",
   "name": "@zendesk/ipcluster",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "license": "Apache-2.0",
   "repository": {
     "type": "git",
@@ -15,7 +15,6 @@
   },
   "main": "lib/ipcluster.js",
   "dependencies": {
-    "lodash": "^4.17.15",
     "q": "1.5.1",
     "toobusy-js": "0.4.3"
   },
