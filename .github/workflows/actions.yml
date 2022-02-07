@@ -26,7 +26,7 @@ jobs:
         npm run ${{ matrix.task }}
   deploy:
     name: node_js-deploy
-    needs: main
+    # needs: main
     runs-on: ubuntu-latest
     steps:
     - uses: zendesk/checkout@v2
@@ -36,14 +36,15 @@ jobs:
       with:
         node-version: 12
     - name: publish
-      if: github.ref == 'refs/heads/master'
+      # if: github.ref == 'refs/heads/master'
       env:
         ARTIFACTORY_USERNAME: ${{ secrets.ARTIFACTORY_USERNAME }}
         ARTIFACTORY_API_KEY: ${{ secrets.ARTIFACTORY_API_KEY }}
       run: |
+        curl -u "$ARTIFACTORY_USERNAME:$ARTIFACTORY_API_KEY" --fail https://zdrepo.jfrog.io/zdrepo/api/npm/npm/auth/zendesk >> ~/.npmrc
+        npm search ipcluster --registry "https://$ARTIFACTORY_USERNAME:$ARTIFACTORY_API_KEY@zdrepo.jfrog.io/zdrepo/api/npm/npm"
         if $(npm v -json | jq --raw-output '."dist-tags".latest') != $(jq --raw-output .version package.json)
         then
-          curl -u "$ARTIFACTORY_USERNAME:$ARTIFACTORY_API_KEY" --fail https://zdrepo.jfrog.io/zdrepo/api/npm/npm/auth/zendesk >> ~/.npmrc
-          npm install
-          npm publish
+          # npm install
+          # npm publish
         fi
