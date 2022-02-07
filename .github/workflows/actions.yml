@@ -36,14 +36,17 @@ jobs:
       with:
         node-version: 12
     - name: publish
-      if: github.ref == 'refs/heads/master'
+      # if: github.ref == 'refs/heads/master'
       env:
         ARTIFACTORY_USERNAME: ${{ secrets.ARTIFACTORY_USERNAME }}
         ARTIFACTORY_API_KEY: ${{ secrets.ARTIFACTORY_API_KEY }}
       run: |
         curl -u "$ARTIFACTORY_USERNAME:$ARTIFACTORY_API_KEY" --fail https://zdrepo.jfrog.io/zdrepo/api/npm/npm/auth/zendesk >> ~/.npmrc
+        npm config list
+        npm search @zendesk/ipcluster --registry "https://$ARTIFACTORY_USERNAME:$ARTIFACTORY_API_KEY@zdrepo.jfrog.io/zdrepo/api/npm/npm"
+        npm show @zendesk/ipcluster --registry "https://$ARTIFACTORY_USERNAME:$ARTIFACTORY_API_KEY@zdrepo.jfrog.io/zdrepo/api/npm/npm"
         if $(npm v -json | jq --raw-output '."dist-tags".latest') != $(jq --raw-output .version package.json)
         then
           npm install
-          npm publish
+          # npm publish
         fi
