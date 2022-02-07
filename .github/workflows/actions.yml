@@ -20,15 +20,10 @@ jobs:
     - uses: zendesk/setup-node@v2.5.1
       with:
         node-version: ${{ matrix.version }}
-    - name: node_js ${{ matrix.version }} ${{ matrix.task}}
-      env:
-        ARTIFACTORY_USERNAME: ${{ secrets.ARTIFACTORY_USERNAME }}
-        ARTIFACTORY_API_KEY: ${{ secrets.ARTIFACTORY_API_KEY }}
+    - name: node_js ${{ matrix.version }} ${{ matrix.task }}
       run: |
-        git config --global url."https://${{ secrets.ORG_GITHUB_TOKEN }}:x-oauth-basic@github.com/".insteadOf "https://github.com/"
-        curl -u "$ARTIFACTORY_USERNAME:$ARTIFACTORY_API_KEY" --fail https://zdrepo.jfrog.io/zdrepo/api/npm/npm/auth/zendesk >> ~/.npmrc
         npm install
-        npm run ${{ matrix.task}}
+        npm run ${{ matrix.task }}
   deploy:
     name: node_js-deploy
     needs: main
@@ -42,9 +37,13 @@ jobs:
         node-version: 12
     - name: publish
       if: github.ref == 'refs/heads/master'
+      env:
+        ARTIFACTORY_USERNAME: ${{ secrets.ARTIFACTORY_USERNAME }}
+        ARTIFACTORY_API_KEY: ${{ secrets.ARTIFACTORY_API_KEY }}
       run: |
         if $(npm v -json | jq --raw-output '."dist-tags".latest') != $(jq --raw-output .version package.json)
         then
+          curl -u "$ARTIFACTORY_USERNAME:$ARTIFACTORY_API_KEY" --fail https://zdrepo.jfrog.io/zdrepo/api/npm/npm/auth/zendesk >> ~/.npmrc
           npm install
           npm publish
         fi
