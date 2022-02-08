@@ -44,6 +44,10 @@ jobs:
         curl -u "$ARTIFACTORY_USERNAME:$ARTIFACTORY_API_KEY" --fail https://zdrepo.jfrog.io/zdrepo/api/npm/npm/auth/zendesk >> ~/.npmrc
         npm config list
         npm search @zendesk/ipcluster --registry "https://$ARTIFACTORY_USERNAME:$ARTIFACTORY_API_KEY@zdrepo.jfrog.io/zdrepo/api/npm/npm"
+        mkdir testfrog
+        cd testfrog
+        npm init -y
+        npm install @zendesk/ipcluster
         npm show @zendesk/ipcluster --registry "https://$ARTIFACTORY_USERNAME:$ARTIFACTORY_API_KEY@zdrepo.jfrog.io/zdrepo/api/npm/npm"
         if $(npm v -json | jq --raw-output '."dist-tags".latest') != $(jq --raw-output .version package.json)
         then
