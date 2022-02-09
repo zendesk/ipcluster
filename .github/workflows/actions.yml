@@ -42,7 +42,7 @@ jobs:
         ARTIFACTORY_API_KEY: ${{ secrets.ARTIFACTORY_API_KEY }}
       run: |
         curl -u "$ARTIFACTORY_USERNAME:$ARTIFACTORY_API_KEY" --fail https://zdrepo.jfrog.io/zdrepo/api/npm/npm/auth/zendesk >> ~/.npmrc
-        if $(npm v -json | jq --raw-output '."dist-tags".latest') != $(jq --raw-output .version package.json)
+        if [ $(npm v -json | jq --raw-output '."dist-tags".latest') != $(jq --raw-output .version package.json) ]
         then
           npm install
           npm publish
