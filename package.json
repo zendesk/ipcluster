@@ -16,7 +16,7 @@
   "main": "lib/ipcluster.js",
   "dependencies": {
     "q": "1.5.1",
-    "toobusy-js": "0.4.3"
+    "toobusy-js": "0.5.1"
   },
   "devDependencies": {
     "eslint": "^6.1.0",
