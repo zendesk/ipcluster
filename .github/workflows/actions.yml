@@ -10,9 +10,8 @@ jobs:
           - lint
           - test-with-coverage > lcov.txt
         version:
-          - 8
-          - 10
-          - 12
+          - 18
+          - 20
     steps:
     - uses: zendesk/checkout@v2
       with:
@@ -34,7 +33,7 @@ jobs:
         fetch-depth: 0
     - uses: zendesk/setup-node@v2.5.1
       with:
-        node-version: 12
+        node-version: 20
     - name: publish
       if: github.ref == 'refs/heads/master'
       env:
